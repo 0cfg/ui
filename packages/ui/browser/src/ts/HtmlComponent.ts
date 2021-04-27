@@ -271,10 +271,9 @@ export class HtmlComponent implements Destroyable {
 
     /**
      * Find the first dom element inside this component matching the {@param selector}.
-     * If no element is found, an error is thrown.
-     * An error is also thrown if the html component is not rendered yet.
+     * If the HTML component isn't rendered yet, an error is thrown.
      */
-    public findInScope<T extends HTMLElement>(selector: string): T {
+    public findInScope<T extends HTMLElement>(selector: string): T | undefined {
         // do not substitute has(this.element) with this.isRendered() here - subclasses may override this.isRendered
         if (!has(this.element)) {
             throw new Error('findInScope called on an unrendered html component.');
@@ -282,7 +281,7 @@ export class HtmlComponent implements Destroyable {
 
         const result = this.findAllInScope(selector);
         if (!has(result) || result.length === 0) {
-            throw new Error(`Element not found ${selector}`);
+            return undefined;
         }
         return result[0] as T;
     }
