@@ -165,7 +165,7 @@ export class HtmlComponent implements Destroyable {
         this.createElementAndApplyAttributes()
             .renderToTargetAndLocation(renderLocation, HtmlComponent.getRenderTarget(container)).afterEveryRenderSync();
 
-        this.afterEveryRender();
+        await this.afterEveryRender();
 
         this.isVisible() &&
         this.fireVisibilityChange(this.isVisible());
