@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.1.10]
+
+### Added
+
+Adds the ability to wait for another component to render.
+
 ## [0.1.9]
 
 ### Improved
